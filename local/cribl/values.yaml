@@ -1,0 +1,103 @@
+COMPUTED VALUES:
+affinity: {}
+autoscaling:
+  enabled: false
+config:
+  bindHost: 0.0.0.0
+  criblHome: /opt/cribl
+  groups: []
+  livenessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /api/v1/health
+      port: 9000
+      scheme: HTTP
+    initialDelaySeconds: 60
+  probes: true
+  readinessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /api/v1/health
+      port: 9000
+      scheme: HTTP
+    initialDelaySeconds: 60
+  rejectSelfSignedCerts: 0
+criblImage:
+  pullPolicy: IfNotPresent
+  repository: cribl/cribl
+  tag: 4.12.2
+  wolfiImage: false
+env:
+#  CRIBL_BEFORE_START_CMD_3: mkdir -p /root/.ssh; /usr/bin/ssh-keyscan -t ecdsa github.com
+#    >> /root/.ssh/known_hosts
+#  CRIBL_BEFORE_START_CMD_4: sleep 30
+#  CRIBL_GIT_AUTH: ssh
+#  CRIBL_GIT_BRANCH: main
+#  CRIBL_GIT_OPS: none
+#  CRIBL_GIT_REMOTE: <git remote repo>
+#  CRIBL_GIT_SSH_KEY: <private key>
+#  CRIBL_GIT_STRICT_HOST_KEY_CHECKING: "no"
+envValueFrom:
+- name: CRIBL_K8S_POD
+  valueFrom:
+    fieldRef:
+      fieldPath: metadata.name
+- name: CRIBL_K8S_CPU_LIMIT
+  valueFrom:
+    resourceFieldRef:
+      divisor: 1m
+      resource: limits.cpu
+extraLabels: {}
+extraObjects: {}
+fullnameOverride: ""
+imagePullSecrets: []
+ingress:
+  annotations: {}
+  enable: false
+  pathType: Prefix
+  prefix: /*
+  tls: []
+iter: 1
+nameOverride: leader
+nodeSelector: {}
+persistence:
+  accessModes:
+  - ReadWriteOnce
+  annotations: {}
+  claimName: leader-config-claim
+  enabled: true
+  extraSpec: {}
+  size: 20Gi
+podAnnotations: {}
+podSecurityContext: {}
+replicaCount: 1
+resources:
+  limits:
+    cpu: 2000m
+    memory: 4096Mi
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+securityContext: {}
+service:
+  annotations: {}
+  externalAnnotations: {}
+  externalType: LoadBalancer
+  internalAnnotations: {}
+  internalType: ClusterIP
+  ports:
+  - external: true
+    name: api
+    port: 9000
+    protocol: TCP
+  - external: false
+    name: leadercomm
+    port: 4200
+    protocol: TCP
+serviceAccount:
+  annotations: {}
+  create: false
+strategy:
+  rollingUpdate: {}
+  type: Recreate
+tolerations: []

@@ -1,0 +1,213 @@
+NetOPS-DWMAIN:
+  type: collection
+  ttl: 4h
+  ignoreGroupJobsLimit: false
+  removeFields: []
+  resumeOnBoot: false
+  schedule:
+    cronSchedule: "*/5 * * * *"
+    maxConcurrentRuns: 1
+    skippable: false
+    resumeMissed: true
+    run:
+      rescheduleDroppedTasks: true
+      maxTaskReschedule: 1
+      logLevel: info
+      jobTimeout: "0"
+      mode: run
+      timeRangeType: relative
+      timeWarning: {}
+      expression: "true"
+      minTaskSize: 1MB
+      maxTaskSize: 10MB
+      stateTracking:
+        enabled: true
+        trackingColumn: ID
+    enabled: true
+  streamtags: []
+  workerAffinity: false
+  collector:
+    conf:
+      queryValidationEnabled: true
+      __scheduling:
+        stateTracking: {}
+      connectionId: USE-Netops
+      query: "`SELECT * FROM \"netop_ldap5075\".\"dbo\".\"DWMAIN\" WHERE ${state &&
+        state.ID ? `ID > ${state.ID.value}` : 'ID > 11291'} ORDER BY ID ASC`"
+    destructive: false
+    type: database
+  input:
+    type: collection
+    breakerRulesets:
+      - Cribl
+    staleChannelFlushMs: 10000
+    sendToRoutes: true
+    preprocess:
+      disabled: true
+    throttleRatePerSec: "0"
+  savedState:
+    databaseCollectorState:
+      data:
+        ID:
+          value: 11292
+  notifications: []
+NetOPS-DWDONE:
+  type: collection
+  ttl: 4h
+  ignoreGroupJobsLimit: false
+  removeFields: []
+  resumeOnBoot: false
+  schedule:
+    cronSchedule: "*/5 * * * *"
+    maxConcurrentRuns: 1
+    skippable: false
+    resumeMissed: true
+    run:
+      rescheduleDroppedTasks: true
+      maxTaskReschedule: 1
+      logLevel: info
+      jobTimeout: "0"
+      mode: run
+      timeRangeType: relative
+      timeWarning: {}
+      expression: "true"
+      minTaskSize: 1MB
+      maxTaskSize: 10MB
+      stateTracking:
+        enabled: true
+        trackingColumn: ID
+    enabled: true
+  streamtags: []
+  workerAffinity: false
+  collector:
+    conf:
+      queryValidationEnabled: true
+      __scheduling:
+        stateTracking: {}
+      connectionId: USE-Netops
+      query: "`SELECT * FROM \"netop_ldap5075\".\"dbo\".\"DWDONE\" WHERE ${state &&
+        state.ID ? `ID > ${state.ID.value}` : 'ID > 4429926'} ORDER BY ID ASC`"
+    destructive: false
+    type: database
+  input:
+    type: collection
+    breakerRulesets:
+      - Cribl
+    staleChannelFlushMs: 10000
+    sendToRoutes: true
+    preprocess:
+      disabled: true
+    throttleRatePerSec: "0"
+  savedState:
+    databaseCollectorState:
+      data:
+        ID:
+          value: 4429929
+  notifications: []
+NetOPS-DWWKST:
+  type: collection
+  ttl: 4h
+  ignoreGroupJobsLimit: false
+  removeFields: []
+  resumeOnBoot: false
+  schedule:
+    cronSchedule: "*/5 * * * *"
+    maxConcurrentRuns: 1
+    skippable: false
+    resumeMissed: true
+    run:
+      rescheduleDroppedTasks: true
+      maxTaskReschedule: 1
+      logLevel: info
+      jobTimeout: "0"
+      mode: run
+      timeRangeType: relative
+      timeWarning: {}
+      expression: "true"
+      minTaskSize: 1MB
+      maxTaskSize: 10MB
+      stateTracking:
+        enabled: true
+        trackingColumn: ID
+    enabled: true
+  streamtags: []
+  workerAffinity: false
+  collector:
+    conf:
+      queryValidationEnabled: true
+      __scheduling:
+        stateTracking: {}
+      connectionId: USE-Netops
+      query: "`SELECT * FROM \"netop_ldap5075\".\"dbo\".\"DWWKST\" WHERE ${state &&
+        state.ID ? `ID > ${state.ID.value}` : 'ID > 6792'} ORDER BY ID ASC`"
+    destructive: false
+    type: database
+  input:
+    type: collection
+    breakerRulesets:
+      - Cribl
+    staleChannelFlushMs: 10000
+    sendToRoutes: true
+    preprocess:
+      disabled: true
+    throttleRatePerSec: "0"
+  savedState:
+    databaseCollectorState:
+      data:
+        ID:
+          value: 6793
+  notifications: []
+NetOPS-DWEVNT:
+  type: collection
+  ttl: 4h
+  ignoreGroupJobsLimit: false
+  removeFields: []
+  resumeOnBoot: false
+  schedule:
+    cronSchedule: "*/5 * * * *"
+    maxConcurrentRuns: 1
+    skippable: false
+    resumeMissed: true
+    run:
+      rescheduleDroppedTasks: true
+      maxTaskReschedule: 1
+      logLevel: info
+      jobTimeout: "0"
+      mode: run
+      timeRangeType: relative
+      timeWarning: {}
+      expression: "true"
+      minTaskSize: 1MB
+      maxTaskSize: 10MB
+      stateTracking:
+        enabled: true
+        trackingColumn: ID
+      timestampTimezone: UTC
+    enabled: true
+  streamtags: []
+  workerAffinity: false
+  collector:
+    conf:
+      queryValidationEnabled: true
+      __scheduling:
+        stateTracking: {}
+      connectionId: USE-Netops
+      query: "`SELECT * FROM \"netop_ldap5075\".\"dbo\".\"DWEVNT\" WHERE ${state &&
+        state.ID ? `ID > ${state.ID.value}` : 'ID > 20288'} ORDER BY ID ASC`"
+    destructive: false
+    type: database
+  input:
+    type: collection
+    breakerRulesets:
+      - Cribl
+    staleChannelFlushMs: 10000
+    sendToRoutes: true
+    preprocess:
+      disabled: true
+    throttleRatePerSec: "0"
+  savedState:
+    databaseCollectorState:
+      data:
+        ID:
+          value: 20289
+  notifications: []

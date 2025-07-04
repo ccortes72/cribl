@@ -1,0 +1,39 @@
+outputs:
+  OTWorkerIntake:
+    systemFields:
+      - cribl_pipe
+    streamtags: []
+    loadBalanced: false
+    compression: gzip
+    logFailedRequests: false
+    throttleRatePerSec: "0"
+    tls:
+      disabled: false
+      rejectUnauthorized: false
+    connectionTimeout: 10000
+    writeTimeout: 60000
+    tokenTTLMinutes: 60
+    excludeFields:
+      - __kube_*
+      - __metadata
+      - __winEvent
+    onBackpressure: queue
+    port: 10070
+    pqMaxFileSize: 1 MB
+    pqMaxSize: 5GB
+    pqPath: $CRIBL_HOME/state/queues
+    pqCompress: gzip
+    pqOnBackpressure: block
+    pqStrictOrdering: true
+    pqControls: {}
+    excludeSelf: false
+    hosts:
+      - port: 10300
+        tls: inherit
+        weight: 1
+        host: 10.120.119.188
+    dnsResolvePeriodSec: 600
+    loadBalanceStatsPeriodSec: 300
+    maxConcurrentSenders: 0
+    type: cribl_tcp
+    host: 10.120.119.188

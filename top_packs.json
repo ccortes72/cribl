@@ -1,0 +1,12 @@
+{
+  "results": [],
+  "metrics": {
+    "metrics_aggregator.referenced_metrics": 3,
+    "metrics_reader.execution_time": 0,
+    "metrics_reader.matched": 1,
+    "metrics_reader.invalid_series": 0,
+    "metrics_aggregator.results": 0,
+    "metrics_aggregator.execution_time": 3
+  },
+  "info": {}
+}

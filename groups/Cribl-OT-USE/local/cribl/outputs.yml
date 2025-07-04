@@ -1,0 +1,127 @@
+outputs:
+  SplunkCloud:
+    systemFields:
+      - cribl_pipe
+    streamtags: []
+    loadBalanced: true
+    nextQueue: indexQueue
+    tcpRouting: nowhere
+    concurrency: 5
+    maxPayloadSizeKB: 4096
+    maxPayloadEvents: 0
+    compress: true
+    rejectUnauthorized: true
+    timeoutSec: 30
+    flushPeriodSec: 1
+    failedRequestLoggingMode: none
+    safeHeaders: []
+    enableMultiMetrics: false
+    authType: manual
+    responseRetrySettings: []
+    timeoutRetrySettings:
+      timeoutRetry: false
+    responseHonorRetryAfterHeader: false
+    onBackpressure: block
+    excludeSelf: false
+    urls:
+      - url: https://http-inputs-airproducts.splunkcloud.com/services/collector/event?auto_extract_timestamp=true
+        weight: 1
+    dnsResolvePeriodSec: 600
+    loadBalanceStatsPeriodSec: 300
+    type: splunk_hec
+    token: "#42:szmGLU6Owlak5YswMgoaDeo+ThXAB6yx2ewPWc7H3taEDp18ud5K5vHfzM9r8EOXc+/\
+      O1wQw/zAltsOlAMpcyQ=="
+  Firemon:
+    systemFields:
+      - cribl_pipe
+    streamtags: []
+    protocol: udp
+    facility: 1
+    severity: 5
+    appName: Cribl
+    messageFormat: rfc3164
+    timestampFormat: syslog
+    throttleRatePerSec: "0"
+    logFailedRequests: false
+    maxRecordSize: 1500
+    udpDnsResolvePeriodSec: 0
+    loadBalanced: true
+    connectionTimeout: 10000
+    writeTimeout: 60000
+    tls:
+      disabled: true
+    onBackpressure: block
+    excludeSelf: false
+    hosts:
+      - tls: inherit
+        weight: 1
+    dnsResolvePeriodSec: 600
+    loadBalanceStatsPeriodSec: 300
+    maxConcurrentSenders: 0
+    type: syslog
+    host: ap-nlb-firemon-lb1-use-4fe03121ed78efb3.elb.us-east-1.amazonaws.com
+    port: 514
+  SplunkCloud-Palo:
+    systemFields:
+      - cribl_pipe
+    streamtags: []
+    loadBalanced: true
+    nextQueue: indexQueue
+    tcpRouting: nowhere
+    concurrency: 5
+    maxPayloadSizeKB: 4096
+    maxPayloadEvents: 0
+    compress: true
+    rejectUnauthorized: true
+    timeoutSec: 30
+    flushPeriodSec: 1
+    failedRequestLoggingMode: none
+    safeHeaders: []
+    enableMultiMetrics: false
+    authType: manual
+    responseRetrySettings: []
+    timeoutRetrySettings:
+      timeoutRetry: false
+    responseHonorRetryAfterHeader: false
+    onBackpressure: block
+    excludeSelf: false
+    urls:
+      - url: https://http-inputs-airproducts.splunkcloud.com/services/collector/event?auto_extract_timestamp=true
+        weight: 1
+    dnsResolvePeriodSec: 600
+    loadBalanceStatsPeriodSec: 300
+    type: splunk_hec
+    token: "#42:Z5BBbjayV/LzkX2G0vQkfeU5XgpohaML/TMjskSeCrZKFQoQtyxQjovWl0K/DhIGpHF\
+      A+LEhM4s8pkshoBSwEQ=="
+  SplunkCloud-Cisco-Router-Switch:
+    systemFields:
+      - cribl_pipe
+    streamtags: []
+    loadBalanced: true
+    nextQueue: indexQueue
+    tcpRouting: nowhere
+    concurrency: 5
+    maxPayloadSizeKB: 4096
+    maxPayloadEvents: 0
+    compress: true
+    rejectUnauthorized: true
+    timeoutSec: 30
+    flushPeriodSec: 1
+    failedRequestLoggingMode: none
+    safeHeaders: []
+    enableMultiMetrics: false
+    authType: manual
+    responseRetrySettings: []
+    timeoutRetrySettings:
+      timeoutRetry: false
+    responseHonorRetryAfterHeader: false
+    onBackpressure: block
+    excludeSelf: false
+    urls:
+      - url: https://http-inputs-airproducts.splunkcloud.com/services/collector/event?auto_extract_timestamp=true
+        weight: 1
+    dnsResolvePeriodSec: 600
+    loadBalanceStatsPeriodSec: 300
+    type: splunk_hec
+    token: "#42:kpEc6boAMqkbLXLY5sYrz0VSRKO8a4sNpkrWXKI5rxphkfJGpPp86M7rb1isCyE/YVO\
+      lK0lxztEWxYTj0KdUWg=="

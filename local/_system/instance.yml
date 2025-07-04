@@ -1,0 +1,28 @@
+distributed:
+  mode: master
+  master:
+    host: 0.0.0.0
+    port: 4200
+    tls:
+      disabled: true
+    authToken: "#42:6ND2kEVRh10QGmgdtjpd255k6b7c9TrQDg3uZVNGYTvInRI8xvsb01RyW0VwLal\
+      7iBL819QfR5sWhaYXOMJ9EQ=="
+    ipWhitelistRegex: /.*/
+    maxActiveCxn: 0
+    resiliency: none
+    configBundles: {}
+    configHelperSocketDir: /tmp
+  cloudWorkspace:
+    disabled: false
+    subscriptionAgreement: true
+    host: main-naughty-kirch-skgsire.cribl.cloud
+    port: 4200
+    authToken: "#42:Ql2xTPIqk2MqnfF8z6vau0fwPS68exPiJpE4GcNEJpBjmunfwBXhEeNqhrG0R9b\
+      bImi76G+AmO6D4gJ1Vnlz5A=="
+    tls:
+      disabled: false
+      rejectUnauthorized: true
+      requestCert: false
+    ipWhitelistRegex: /.*/
+    maxActiveCxn: 0
+  reportedDeploymentId: OT Leader

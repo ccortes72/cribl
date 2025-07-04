@@ -1,0 +1,58 @@
+inputs:
+  in_syslog:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    host: 0.0.0.0
+    maxBufferSize: 1000
+    ipWhitelistRegex: /.*/
+    timestampTimezone: local
+    singleMsgUdpPackets: false
+    enableProxyHeader: false
+    keepFieldsList: []
+    octetCounting: false
+    inferFraming: true
+    allowNonStandardAppName: false
+    tls:
+      disabled: true
+    enableLoadBalancing: false
+    type: syslog
+    udpPort: 514
+    tcpPort: 514
+    pipeline: PassThru-DNSlookup
+  in_cribl_tcp:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    host: 0.0.0.0
+    tls:
+      disabled: false
+      requestCert: false
+      certificateName: TLS_COMMS_CERT
+      certPath: $CRIBL_HOME/local/cribl/auth/certs/TLS_COMMS_CERT.crt
+      privKeyPath: $CRIBL_HOME/local/cribl/auth/certs/TLS_COMMS_CERT.key
+      minVersion: TLSv1.1
+      maxVersion: TLSv1.3
+    maxActiveCxn: 1000
+    enableProxyHeader: false
+    enableLoadBalancing: false
+    type: cribl_tcp
+    port: 10070
+  tcp-windows:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    host: 0.0.0.0
+    tls:
+      disabled: true
+    maxActiveCxn: 1000
+    socketIdleTimeout: 0
+    socketEndingMaxWait: 30
+    socketMaxLifespan: 0
+    enableProxyHeader: false
+    enableLoadBalancing: false
+    type: cribl_tcp
+    port: 10071

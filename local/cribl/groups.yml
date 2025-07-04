@@ -1,0 +1,33 @@
+default:
+  description: Default Worker Group
+  tags: default
+default_fleet:
+  description: Default Fleet
+  tags: default
+  isFleet: true
+Cribl-OT-Frankfurt:
+  workerRemoteAccess: true
+  streamtags: []
+  isFleet: false
+  isSearch: false
+  configVersion: "95e2509"
+Cribl_OT_Lab_HQ:
+  workerRemoteAccess: true
+  streamtags: []
+  isFleet: false
+  isSearch: false
+  configVersion: 7dc3f4e
+Cribl-OT-USE:
+  workerRemoteAccess: true
+  streamtags: []
+  isFleet: false
+  isSearch: false
+  configVersion: "5e36241"
+  lookupDeployments: []
+Cribl-OT-SG:
+  workerRemoteAccess: false
+  streamtags: []
+  isFleet: false
+  isSearch: false
+  description: "Singapore OT Worker Group "
+  configVersion: f0e396b

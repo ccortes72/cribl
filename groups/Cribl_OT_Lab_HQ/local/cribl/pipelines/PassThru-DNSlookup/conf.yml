@@ -1,0 +1,18 @@
+output: default
+streamtags: []
+groups: {}
+asyncFuncTimeout: 1000
+functions:
+  - id: dns_lookup
+    filter: "true"
+    disabled: null
+    conf:
+      cacheTTL: 30
+      maxCacheSize: 5000
+      useResolvConf: true
+      lookupFallback: false
+      lookupFailLogLevel: error
+      dnsLookupFields: []
+      reverseLookupFields:
+        - inFieldName: host
+          outFieldName: hostname

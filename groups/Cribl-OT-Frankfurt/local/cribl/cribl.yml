@@ -1,0 +1,8 @@
+auth:
+  type: local
+  filter_type: email_whitelist
+upgradeGroupSettings:
+  quantity: 33
+  isRolling: true
+  retryDelay: 1000
+  retryCount: 5

@@ -1,0 +1,56 @@
+output: default
+streamtags: []
+groups: {}
+asyncFuncTimeout: 1000
+functions:
+  - id: auto_timestamp
+    filter: host.match(/\d{4}/)
+    disabled: null
+    conf:
+      srcField: _raw
+      dstField: _time
+      defaultTimezone: local
+      timeExpression: time.getTime() / 1000
+      offset: 0
+      maxLen: 150
+      defaultTime: now
+      latestDateAllowed: +1week
+      earliestDateAllowed: -420weeks
+      timestamps:
+        - regex: /\w{3}\s\d{1,2}\s\d\d:\d\d:\d\d\s\d{4}/
+          strptime: "%b %d %H:%M:%S %Y"
+  - id: regex_extract
+    filter: host.match(/\d{4}/)
+    disabled: null
+    conf:
+      source: _raw
+      iterations: 100
+      overwrite: true
+      regex: /\w{3}\s{1,2}\d{1,2}\s\d\d:\d\d:\d\d\s\d{4}\s\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.*AP:(?<host>\S+)/
+      regexList: []
+    description: pull hostname from aruba logs
+  - id: dns_lookup
+    filter: host.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)
+    disabled: false
+    conf:
+      cacheTTL: 30
+      maxCacheSize: 5000
+      useResolvConf: true
+      lookupFallback: false
+      lookupFailLogLevel: error
+      dnsLookupFields: []
+      reverseLookupFields:
+        - inFieldName: host
+          outFieldName: hostname
+    final: true
+  - id: eval
+    filter: "true"
+    disabled: false
+    conf:
+      add:
+        - disabled: false
+          name: hostname
+          value: host
+      keep:
+        - "*"
+    description: "host already having dns names will be captured here "

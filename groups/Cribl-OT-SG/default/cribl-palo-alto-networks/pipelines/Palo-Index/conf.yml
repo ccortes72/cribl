@@ -1,0 +1,35 @@
+output: default
+streamtags: []
+groups: {}
+asyncFuncTimeout: 1000
+functions:
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: OT index definition
+  - id: eval
+    filter: (host.includes('f-') && host.includes('ics'))
+    disabled: true
+    conf:
+      add:
+        - disabled: false
+          name: index
+          value: "'firewall_pa_ics'"
+      keep:
+        - index
+  - id: comment
+    filter: "true"
+    disabled: null
+    conf:
+      comment: IT index definition
+  - id: eval
+    filter: (host.includes('f-') && !host.includes('ics'))
+    disabled: true
+    conf:
+      add:
+        - disabled: false
+          name: index
+          value: "'firewall_pa'"
+      keep:
+        - index

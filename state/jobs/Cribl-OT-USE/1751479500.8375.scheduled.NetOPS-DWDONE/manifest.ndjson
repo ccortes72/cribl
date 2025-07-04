@@ -1,0 +1,2 @@
+{"state":"005","task":{"taskId":"discover"}}
+{"state":"005","task":{"taskId":"collect.0","collectibles":[{"format":"raw","stateKey":"databaseCollectorState","host":"ip-10-120-119-165.ec2.internal","collectorId":"NetOPS-DWDONE","taskId":"discover","guid":"86950e22-66e2-494a-9131-49b5c3f3e24d","state":{"ID":{"value":4429929}}}]}}

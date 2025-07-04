@@ -1,0 +1,104 @@
+COMPUTED VALUES:
+COMPUTED VALUES: null
+affinity: {}
+autoscaling:
+  enabled: false
+config:
+  adminPassword: null
+  bindHost: 0.0.0.0
+  criblHome: /opt/cribl
+  groups: []
+  leaderUrl: null
+  license: null
+  livenessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /api/v1/health
+      port: 9000
+      scheme: HTTP
+    initialDelaySeconds: 60
+  probes: true
+  readinessProbe:
+    failureThreshold: 3
+    httpGet:
+      path: /api/v1/health
+      port: 9000
+      scheme: HTTP
+    initialDelaySeconds: 60
+  rejectSelfSignedCerts: 0
+  scName: null
+  token: null
+criblImage:
+  pullPolicy: IfNotPresent
+  repository: cribl/cribl
+  tag: 4.12.2
+  wolfiImage: false
+envValueFrom:
+- name: CRIBL_K8S_POD
+  valueFrom:
+    fieldRef:
+      fieldPath: metadata.name
+- name: CRIBL_K8S_CPU_LIMIT
+  valueFrom:
+    resourceFieldRef:
+      divisor: 1m
+      resource: limits.cpu
+extraLabels: {}
+extraObjects: {}
+fullnameOverride: ""
+imagePullSecrets: []
+ingress:
+  annotations: {}
+  enable: false
+  host: null
+  ingressClassName: null
+  pathType: Prefix
+  prefix: /*
+  tls: []
+iter: 1
+nameOverride: leader
+nodeSelector: {}
+persistence:
+  accessModes:
+  - ReadWriteOnce
+  annotations: {}
+  claimName: leader-config-claim
+  enabled: true
+  extraSpec: {}
+  size: 20Gi
+  storageClassName: null
+podAnnotations: {}
+podSecurityContext: {}
+replicaCount: 1
+resources:
+  limits:
+    cpu: 2000m
+    memory: 4096Mi
+  requests:
+    cpu: 500m
+    memory: 1024Mi
+securityContext: {}
+service:
+  annotations: {}
+  externalAnnotations: {}
+  externalType: LoadBalancer
+  internalAnnotations: {}
+  internalType: ClusterIP
+  ports:
+  - external: true
+    name: api
+    port: 9000
+    protocol: TCP
+  - external: false
+    name: leadercomm
+    port: 4200
+    protocol: TCP
+serviceAccount:
+  annotations: {}
+  create: false
+strategy:
+  rollingUpdate:
+    maxSurge: null
+    maxUnavailable: null
+  type: Recreate
+tolerations: []
