@@ -1,5 +1,0 @@
-# Cribl Lake Configuration
-
-default:
-  maxLakehouses: 10
-  maxLakehouseIndexedFieldsCount: 5

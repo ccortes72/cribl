@@ -1,7 +1,0 @@
-custom:
-  custom-banner:
-    theme: orange
-    enabled: true
-    type: custom
-    message: Authorized users only. All activity monitored. Unauthorized access
-      prohibited
